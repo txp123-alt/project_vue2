@@ -1,5 +1,10 @@
 //对axios进行二次封装
 import axios from "axios";
+//引入进度条
+import nprogress from "nprogress"
+//引入进度条样式
+import "nprogress/nprogress.css"
+
 
 
 //创建axios实例，并且进行配置
@@ -13,15 +18,19 @@ const request = axios.create({
 
 //请求拦截器
 request.interceptors.request.use((config)=>{
+    //网络请求加载进度条开始
+    nprogress.start()
     //config是配置对象，里面的header请求头属性很重要
     return config
 })
 
 //相应拦截器
 request.interceptors.response.use((res)=>{
+    //网络请求完成，进度条关闭
+    nprogress.done()
     //服务器成功的回调函数
     return res.data
-},(Error)=>{
+},(err)=>{
     //服务器相应失败的回调函数
     return Promise.reject(new Error('false'))
 })
