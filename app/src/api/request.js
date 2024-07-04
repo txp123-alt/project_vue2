@@ -24,7 +24,7 @@ request.interceptors.request.use((config)=>{
     return config
 })
 
-//相应拦截器
+//相响应拦截器
 request.interceptors.response.use((res)=>{
     //网络请求完成，进度条关闭
     nprogress.done()

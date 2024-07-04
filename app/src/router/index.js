@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from "vue-router";
 
-//使用vuerouter插件
+//使用vuerouter插件 首先需要先引入router包， 然后创建文件夹，创建js文件来配置router
 Vue.use(VueRouter)
 
 //重写push|replace方法
@@ -22,8 +22,10 @@ VueRouter.prototype.push = function (location,resolve,reject){
 
 VueRouter.prototype.replace = function (location, resolve, reject){
     if (resolve && reject){
+        console.log('传入成功及回调函数，用于解决多次点击报错的问题')
         originReplace.call(this,location,resolve,reject)
     }else {
+        console.log('未传入成功及回调函数，用于解决多次点击报错的问题')
         originReplace.call(this,location,()=>{},()=>{})
     }
 }
