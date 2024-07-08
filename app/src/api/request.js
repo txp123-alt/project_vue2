@@ -1,4 +1,4 @@
-//对axios进行二次封装
+//对axios进行二次封装  下载axios npm install axios
 import axios from "axios";
 //引入进度条
 import nprogress from "nprogress"
@@ -17,6 +17,7 @@ const request = axios.create({
 })
 
 //请求拦截器
+//参数中的config是一个配置对象，里面有一个很重要的属性， header请求头
 request.interceptors.request.use((config)=>{
     //网络请求加载进度条开始
     nprogress.start()
